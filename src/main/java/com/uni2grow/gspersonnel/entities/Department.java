@@ -12,10 +12,10 @@ public class Department implements Serializable {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private                                             String description;
-    @OneToOne
-    private Personnel headOfDepartment;
-    @OneToMany(cascade = CascadeType.ALL)
+    private String description;
+   // @OneToOne(fetch = FetchType.LAZY)
+   // private Personnel headOfDepartment;
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Personnel> personnels;
 
     public Department() {
@@ -23,7 +23,7 @@ public class Department implements Serializable {
     public Department(String name, String description, Personnel headOfDepartment, List<Personnel> personnels) {
         this.name = name;
         this.description = description;
-        this.headOfDepartment = headOfDepartment;
+        //this.headOfDepartment = headOfDepartment;
         this.personnels = personnels;
     }
 
@@ -49,14 +49,6 @@ public class Department implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Personnel getHeadOfDepartment() {
-        return headOfDepartment;
-    }
-
-    public void setHeadOfDepartment(Personnel headOfDepartment) {
-        this.headOfDepartment = headOfDepartment;
     }
 
     public List<Personnel> getPersonnels() {

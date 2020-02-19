@@ -1,7 +1,6 @@
 package com.uni2grow.gspersonnel.entities;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -11,17 +10,17 @@ public class Personnel_Service {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    private Service service;
-    @OneToOne(mappedBy = "personnelService")
+    private Services services;
+    @OneToOne(fetch = FetchType.LAZY)
     private Personnel personnel;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Session session;
 
 
     public Personnel_Service() {
     }
-    public Personnel_Service(Service service, Personnel personnel, Session session) {
-        this.service = service;
+    public Personnel_Service(Services services, Personnel personnel, Session session) {
+        this.services = services;
         this.personnel = personnel;
         this.session = session;
     }
@@ -34,12 +33,12 @@ public class Personnel_Service {
         this.id = id;
     }
 
-    public Service getService() {
-        return service;
+    public Services getServices() {
+        return services;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setServices(Services services) {
+        this.services = services;
     }
 
     public Personnel getPersonnel() {

@@ -9,7 +9,7 @@ import java.util.Objects;
 
 
 @Inheritance(strategy = InheritanceType.JOINED)
-//@MappedSuperclass
+@MappedSuperclass
 public class Personne implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -17,7 +17,7 @@ public class Personne implements Serializable {
     private String firstName;
     private String lastName;
     @Enumerated(EnumType.STRING)
-    private EnumSex sex =  EnumSex.F;
+    private EnumSex sex;
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     private String placeOfBirth;
@@ -39,7 +39,7 @@ public class Personne implements Serializable {
         this.address = address;
         this.phonePrincipal = phonePrincipal;
         this.phoneSecondary = phoneSecondary;
-        Email = email;
+        this.Email = email;
     }
 
 

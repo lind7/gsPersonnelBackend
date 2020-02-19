@@ -16,33 +16,30 @@ public class Personnel extends Personne implements Serializable {
     private Long id;
     private String nid;
     private int seniority;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Grade grade;
-
+    @Enumerated(EnumType.STRING)
     private EnumMaritalStatus maritalStatus;
     private boolean permanent;
     private int numberOfChildren;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private PersonnelType personnelType;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Department department;
 
-    @OneToOne(mappedBy = "headOfDepartment", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Department departmentHead;
+  //  @OneToOne(mappedBy = "headOfDepartment", fetch = FetchType.LAZY)
+   // private Department departmentHead;
 
     private boolean isHead;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Personnel_Service personnelService;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "personel_Session", joinColumns = {@JoinColumn(name = "idSession")},
-            inverseJoinColumns = {@JoinColumn(name = "idPersonnel")})
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private Session session;
 
 
     public Personnel(String firstName, String lastName, EnumSex sex, Date dateOfBirth, String placeOfBirth, String address,
                      String phonePrincipal, String phoneSecondary, String email, String nid, int seniority, boolean permanent,
                      EnumMaritalStatus maritalStatus, int numberOfChildren, boolean isHead, Grade grade, Session session,
-                     PersonnelType personnelType, Department department, Personnel_Service personnelService ) {
+                     PersonnelType personnelType, Department department ) {
         super(firstName, lastName,  sex,  dateOfBirth, placeOfBirth, address, phonePrincipal, phoneSecondary, email);
         this.nid = nid;
         this.seniority = seniority;
@@ -53,7 +50,6 @@ public class Personnel extends Personne implements Serializable {
         this.personnelType = personnelType;
         this.department = department;
         this.isHead = isHead;
-        this.personnelService = personnelService;
         this.session = session;
     }
     public Personnel(String firstName, String lastName, EnumSex sex, Date dateOfBirth, String placeOfBirth, String address,
@@ -89,14 +85,6 @@ public class Personnel extends Personne implements Serializable {
     }
     public EnumMaritalStatus getMaritalStatus() {
         return maritalStatus;
-    }
-
-    public Personnel_Service getPersonnelService() {
-        return personnelService;
-    }
-
-    public void setPersonnelService(Personnel_Service personnelService) {
-        this.personnelService = personnelService;
     }
 
     public Session getSession() {
@@ -174,13 +162,7 @@ public class Personnel extends Personne implements Serializable {
     public void setHead(boolean head) {
         isHead = head;
     }
-    public Department getDepartmentHead() {
-        return departmentHead;
-    }
 
-    public void setDepartmentHead(Department departmentHead) {
-        this.departmentHead = departmentHead;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -194,4 +176,6 @@ public class Personnel extends Personne implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
+
+
 }

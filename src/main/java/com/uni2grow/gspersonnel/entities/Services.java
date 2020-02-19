@@ -6,16 +6,16 @@ import java.util.Objects;
 
 @Entity
 //@Table(name = "gs_Service")
-public class Service implements Serializable {
+public class Services implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
 
-    public Service() {
+    public Services() {
     }
-    public Service(String name, String description) {
+    public Services(String name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -47,9 +47,9 @@ public class Service implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Service)) return false;
-        Service service = (Service) o;
-        return getId().equals(service.getId());
+        if (!(o instanceof Services)) return false;
+        Services services = (Services) o;
+        return getId().equals(services.getId());
     }
 
     @Override
