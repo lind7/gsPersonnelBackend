@@ -1,10 +1,11 @@
 package com.uni2grow.gspersonnel.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Personnel_Session {
+public class Personnel_Session  implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
@@ -12,10 +13,11 @@ public class Personnel_Session {
   private Date startDate;
     @Temporal(TemporalType.DATE)
   private Date endDate;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Personnel Personnel;
   @ManyToOne(fetch = FetchType.LAZY)
   private Session session;
-    @ManyToOne(fetch = FetchType.LAZY)
-  private Personnel Personnel;
+
 
 
     public Personnel_Session(Date startDate, Date endDate, Session session, Personnel personnel) {

@@ -1,11 +1,12 @@
 package com.uni2grow.gspersonnel.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 //@Table(name = "gs_Personnel_service")
-public class Personnel_Service {
+public class Personnel_Service implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;

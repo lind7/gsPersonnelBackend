@@ -1,8 +1,5 @@
 package com.uni2grow.gspersonnel.controllers;
 
-import com.uni2grow.gspersonnel.dao.PersonnelSessionRepository;
-import com.uni2grow.gspersonnel.entities.Department;
-import com.uni2grow.gspersonnel.entities.Personnel_Service;
 import com.uni2grow.gspersonnel.entities.Personnel_Session;
 import com.uni2grow.gspersonnel.services.PersonnelSessionRestService;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +11,11 @@ import java.util.List;
 @RequestMapping("/api/personnelSession")
 public class PersonnelSessionController {
  private PersonnelSessionRestService personnelSessionRestService;
+
+    public PersonnelSessionController(PersonnelSessionRestService personnelSessionRestService) {
+        this.personnelSessionRestService = personnelSessionRestService;
+    }
+
     @GetMapping
     public List<Personnel_Session> getPersonnelSession() {
         return  this.personnelSessionRestService.getPersonnelSession();
