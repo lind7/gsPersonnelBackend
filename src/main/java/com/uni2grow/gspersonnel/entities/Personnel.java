@@ -13,15 +13,24 @@ import java.util.Objects;
 public class Personnel extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
+  //  @Column(nullable = false)
     private Long id;
+  //  @Column(nullable = false)
     private String nid;
     private int seniority;
     @ManyToOne(fetch = FetchType.LAZY)
+  //  @Column(nullable = false)
     private Grade grade;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EnumMaritalStatus maritalStatus;
+
+    @Column(nullable = false)
     private boolean permanent;
     private int numberOfChildren;
+
+  //  @JoinColumn(nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private PersonnelType personnelType;
     @ManyToOne(fetch = FetchType.LAZY)

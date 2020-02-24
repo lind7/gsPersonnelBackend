@@ -1,6 +1,6 @@
 package com.uni2grow.gspersonnel.controllers;
 
-import com.uni2grow.gspersonnel.entities.Personnel_Session;
+import com.uni2grow.gspersonnel.entities.PersonnelSession;
 import com.uni2grow.gspersonnel.services.PersonnelSessionRestService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +16,16 @@ public class PersonnelSessionController {
         this.personnelSessionRestService = personnelSessionRestService;
     }
 
-    @GetMapping
-    public List<Personnel_Session> getPersonnelSession() {
+    @GetMapping("/all")
+    public List<PersonnelSession> getPersonnelSession() {
         return  this.personnelSessionRestService.getPersonnelSession();
     }
-    @PostMapping
-    public Personnel_Session addPersonnelSession(@RequestBody Personnel_Session department) {
-        return  personnelSessionRestService.addPersonnelSession(department);
+    @PostMapping("/add")
+    public PersonnelSession addPersonnelSession(@RequestBody PersonnelSession personnelSession) {
+        return  personnelSessionRestService.addPersonnelSession(personnelSession);
     }
-    @PutMapping
-    public Personnel_Session updatePersonnelSession(@RequestBody Personnel_Session department) {
+    @PutMapping("/update")
+    public PersonnelSession updatePersonnelSession(@RequestBody PersonnelSession department) {
         return  personnelSessionRestService.updatePersonnelSession(department);
     }
 }

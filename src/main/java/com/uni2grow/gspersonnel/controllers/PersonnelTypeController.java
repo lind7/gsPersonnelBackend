@@ -14,15 +14,15 @@ public class PersonnelTypeController {
     public PersonnelTypeController(PersonnelTypeRestService personnelTypeRestService) {
         this.personnelTypeRestService = personnelTypeRestService;
     }
-    @GetMapping
+    @GetMapping("/all")
     public List<PersonnelType> getPersonnelType() {
         return  personnelTypeRestService.getPersonnelType();
     }
-    @PostMapping
+    @PostMapping("/add")
     public PersonnelType addPersonnelType(@RequestBody PersonnelType personnelType) {
         return  personnelTypeRestService.addPersonnelType(personnelType);
     }
-    @PutMapping
+    @PutMapping("/update")
     public PersonnelType updatePersonnelType(@RequestBody PersonnelType personnelType) {
         return  personnelTypeRestService.updatePersonnelType(personnelType);
     }

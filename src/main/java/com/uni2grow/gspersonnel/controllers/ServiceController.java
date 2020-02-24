@@ -12,16 +12,16 @@ public class ServiceController {
     public ServiceController(ServiceRestService serviceRestService) {
         this.serviceRestService = serviceRestService;
     }
-        @GetMapping
+        @GetMapping("/all")
         public List<Services> getServices () {
             return  this.serviceRestService.getService();
         }
-        @PostMapping
-        public Services addServices (Services service) {
+        @PostMapping("/add")
+        public Services addServices ( @RequestBody Services service) {
             return  this.serviceRestService.addService(service);
         }
-        @PutMapping
-        public Services updateServices (Services service) {
+        @PutMapping("/update")
+        public Services updateServices (@RequestBody Services service) {
             return  this.serviceRestService.updateService(service);
         }
     }

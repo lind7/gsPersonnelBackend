@@ -13,18 +13,26 @@ import java.util.Objects;
 public class Personne implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long id;
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EnumSex sex;
+  //  @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
+  //  @Column(nullable = false)
     private String placeOfBirth;
+  //  @Column(nullable = false)
     private String address;
+   // @Column(nullable = false)
     private String phonePrincipal;
     private String phoneSecondary;
-    private String Email;
+    private String email;
 
     public Personne() {
     }
@@ -39,7 +47,7 @@ public class Personne implements Serializable {
         this.address = address;
         this.phonePrincipal = phonePrincipal;
         this.phoneSecondary = phoneSecondary;
-        this.Email = email;
+        this.email = email;
     }
 
 
@@ -108,11 +116,11 @@ public class Personne implements Serializable {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
     public EnumSex getSex() {
         return sex;

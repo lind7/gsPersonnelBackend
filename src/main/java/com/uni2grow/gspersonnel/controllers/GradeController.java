@@ -1,7 +1,6 @@
 package com.uni2grow.gspersonnel.controllers;
 
 import com.uni2grow.gspersonnel.entities.Grade;
-import com.uni2grow.gspersonnel.entities.Personnel;
 import com.uni2grow.gspersonnel.services.GradeRestService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +16,19 @@ public class GradeController {
         this.gradeRestService = gradeRestService;
     }
 
-    @GetMapping
-    public List<Grade> getGrade() {
-        return  gradeRestService.getGrade();
+    @GetMapping("/all")
+    public List<Grade> getAllGrades() {
+        return  gradeRestService.getAllGrades();
     }
-    @PostMapping
+    @PostMapping("/add")
     public Grade addGrade(@RequestBody Grade grade) {
         return  gradeRestService.addGrade(grade);
     }
-    @PutMapping
+    @PutMapping("/update")
     public Grade updateGrade(@RequestBody Grade personnel) {
         return  gradeRestService.updateGrade(personnel);
     }
 
 }
+// /api/grade/details?id=2  => @RequestParam("id")
+// /api/grade/details/2 => @PathVariable("id")

@@ -1,7 +1,7 @@
 package com.uni2grow.gspersonnel.services;
 
 import com.uni2grow.gspersonnel.dao.PersonnelSessionRepository;
-import com.uni2grow.gspersonnel.entities.Personnel_Session;
+import com.uni2grow.gspersonnel.entities.PersonnelSession;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,17 +14,17 @@ public class PersonnelSessionRestService implements IpersonnelSessionRestService
     }
 
     @Override
-    public List<Personnel_Session> getPersonnelSession() {
+    public List<PersonnelSession> getPersonnelSession() {
         return this.personnelSessionRepository.findAll();
     }
 
     @Override
-    public Personnel_Session addPersonnelSession(Personnel_Session personnel_Session) {
+    public PersonnelSession addPersonnelSession(PersonnelSession personnel_Session) {
         return this.personnelSessionRepository.save(personnel_Session);
     }
 
     @Override
-    public Personnel_Session updatePersonnelSession(Personnel_Session personnel_Session) {
+    public PersonnelSession updatePersonnelSession(PersonnelSession personnel_Session) {
         return this.personnelSessionRepository.save(personnel_Session);
     }
 }

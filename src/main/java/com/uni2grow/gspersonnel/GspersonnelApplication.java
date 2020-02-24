@@ -57,16 +57,18 @@ public class GspersonnelApplication  implements CommandLineRunner {
         Department computerScience = new Department("informatique", "departement d'informatique", linda,personnelList);
         departmentRepository.save(computerScience);
         Services censor = new Services("censeur", "censeur de l'établissement");
-        serviceRepository.save(censor);
+        Services provisor = new Services("provi", "provi de l'établissement");
+        serviceRepository.save(provisor);
+
         PersonnelType teacher = new PersonnelType("enseignant", "Personnes enseignant dans l'établissemnt");
         personnelTypeRepository.save(teacher);
         Grade dipes2 = new Grade("Dipes II", "diplome d'enseignement secondaire II",10);
         gradeRepository.save(dipes2);
         Session session1 = new Session("session1",df.parse("18/02/2019"), df.parse("18/02/2020"),true);
         sessionRepository.save(session1);
-        Personnel_Session personnel_session1 = new Personnel_Session(df.parse("18/02/2019"), df.parse("18/02/2020"),session1, linda);
+        PersonnelSession personnel_session1 = new PersonnelSession(df.parse("18/02/2019"), df.parse("18/02/2020"),session1, linda);
         personnelSessionRepository.save(personnel_session1);
-        Personnel_Service personnel_service1 = new Personnel_Service(censor,linda, session1);
+        PersonnelService personnel_service1 = new PersonnelService(provisor,linda, session1);
         personnelServiceRepository.save(personnel_service1);
 
     }

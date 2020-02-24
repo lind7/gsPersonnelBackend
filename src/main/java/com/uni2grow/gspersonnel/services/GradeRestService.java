@@ -4,6 +4,7 @@ import com.uni2grow.gspersonnel.dao.GradeRepository;
 import com.uni2grow.gspersonnel.entities.Grade;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -16,7 +17,7 @@ public class GradeRestService  implements IgradeRestService{
 
 
     @Override
-    public List<Grade> getGrade() {
+    public List<Grade> getAllGrades() {
         return this.gradeRepository.findAll();
     }
 
@@ -28,5 +29,10 @@ public class GradeRestService  implements IgradeRestService{
     @Override
     public Grade updateGrade(Grade grade) {
         return this.gradeRepository.save(grade);
+    }
+
+    @Override
+    public Grade getGrade(Long idGrade) {
+        return gradeRepository.findById(idGrade).orElse(null);
     }
 }

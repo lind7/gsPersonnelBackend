@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Personnel_Session  implements Serializable {
+public class PersonnelSession implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
@@ -20,13 +20,13 @@ public class Personnel_Session  implements Serializable {
 
 
 
-    public Personnel_Session(Date startDate, Date endDate, Session session, Personnel personnel) {
+    public PersonnelSession(Date startDate, Date endDate, Session session, Personnel personnel) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.session = session;
         Personnel = personnel;
     }
-    public Personnel_Session(){
+    public PersonnelSession(){
 
     }
 

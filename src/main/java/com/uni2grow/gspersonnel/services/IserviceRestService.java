@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IserviceRestService {
     List<Services> getService();
-    Services addService(Services services);
-    Services updateService(Services services);
+    Services addService(Services service);
+    Services updateService(Services service);
 }

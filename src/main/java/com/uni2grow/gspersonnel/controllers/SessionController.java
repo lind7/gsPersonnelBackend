@@ -16,15 +16,15 @@ public class SessionController {
     public SessionController(SessionRestService sessionRestService) {
         this.sessionRestService = sessionRestService;
     }
-    @GetMapping
+    @GetMapping("/all")
     public List<Session> getSession() {
         return  this.sessionRestService.getSession();
     }
-    @PostMapping
+    @PostMapping("/add")
     public Session addSession(@RequestBody Session session) {
         return  this.sessionRestService.addSession(session);
     }
-    @PutMapping
+    @PutMapping("/update")
     public Session updateSession(@RequestBody Session session) {
         return  this.sessionRestService.updateSession(session);
     }

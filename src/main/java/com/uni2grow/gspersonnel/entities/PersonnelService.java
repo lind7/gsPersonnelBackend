@@ -6,21 +6,26 @@ import java.util.Objects;
 
 @Entity
 //@Table(name = "gs_Personnel_service")
-public class Personnel_Service implements Serializable {
+public class PersonnelService implements Serializable {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
+  //  @Column(nullable = false)
     private Long id;
     @ManyToOne
+   // @JoinColumn(nullable = false)
     private Services services;
+
+  //  @JoinColumn(nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     private Personnel personnel;
+  //  @JoinColumn(nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Session session;
 
 
-    public Personnel_Service() {
+    public PersonnelService() {
     }
-    public Personnel_Service(Services services, Personnel personnel, Session session) {
+    public PersonnelService(Services services, Personnel personnel, Session session) {
         this.services = services;
         this.personnel = personnel;
         this.session = session;
@@ -61,8 +66,8 @@ public class Personnel_Service implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Personnel_Service)) return false;
-        Personnel_Service that = (Personnel_Service) o;
+        if (!(o instanceof PersonnelService)) return false;
+        PersonnelService that = (PersonnelService) o;
         return getId().equals(that.getId());
     }
 

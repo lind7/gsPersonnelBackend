@@ -1,11 +1,11 @@
 package com.uni2grow.gspersonnel.services;
 
-import com.uni2grow.gspersonnel.entities.Personnel_Service;
+import com.uni2grow.gspersonnel.entities.PersonnelService;
 import java.util.List;
 
 public interface IpersonnelServiceRestService {
-    List<Personnel_Service> getPersonnelService();
-    Personnel_Service addPersonnelService(Personnel_Service personnel_service);
-    Personnel_Service updatePersonnelService(Personnel_Service personnel_service);
+    List<PersonnelService> getPersonnelService();
+    PersonnelService addPersonnelService(PersonnelService personnel_service);
+    PersonnelService updatePersonnelService(PersonnelService personnel_service);
 
 }

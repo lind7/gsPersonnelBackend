@@ -9,7 +9,10 @@ import java.util.Objects;
 public class Grade implements Serializable   {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
+ //   @Column(nullable = false)
     private Long id;
+
+  //  @Column(nullable = false)
     private String name;
     private String description;
     private int maxHoursPerWeek;
