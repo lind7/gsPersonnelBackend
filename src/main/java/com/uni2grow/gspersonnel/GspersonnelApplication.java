@@ -56,6 +56,7 @@ public class GspersonnelApplication  implements CommandLineRunner {
         personnelList.add(linda);
         Department computerScience = new Department("informatique", "departement d'informatique", linda,personnelList);
         departmentRepository.save(computerScience);
+
         Services censor = new Services("censeur", "censeur de l'établissement");
         Services provisor = new Services("provi", "provi de l'établissement");
         serviceRepository.save(provisor);

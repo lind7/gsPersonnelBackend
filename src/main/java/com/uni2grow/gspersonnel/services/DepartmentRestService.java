@@ -7,6 +7,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class DepartmentRestService implements IdepartmentRestService {
    private DepartmentRepository departmentRepository;
@@ -32,7 +34,12 @@ public class DepartmentRestService implements IdepartmentRestService {
     }
 
     @Override
-    public void searchDepartment(String mc, int page, int size) {
-       // return departmentRepository.search("%"+mc+"%", new PageRequest(size,page);
+    public Page<Department> searchDepartment(String mc, int page, int size) {
+        return departmentRepository.search("%"+mc+"%",  PageRequest.of(size,page));
+    }
+
+    @Override
+    public Optional<Department> findDepartment(Long id) {
+        return  departmentRepository.findById(id);
     }
 }

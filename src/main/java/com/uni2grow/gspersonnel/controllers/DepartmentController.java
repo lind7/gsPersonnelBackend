@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/department")
@@ -31,10 +33,14 @@ public class DepartmentController {
         return  departmentRestService.updateDepartment(department);
     }
     @GetMapping("/search")
-    public void searchDepartment(@RequestParam(name ="mc", defaultValue ="") String mc,
-                                             @RequestParam(name ="page", defaultValue = "0")int page,
+    public Page<Department> searchDepartment(@RequestParam(name ="mc", defaultValue ="in") String mc,
+                                             @RequestParam(name ="page", defaultValue = "1")int page,
                                              @RequestParam(name ="size", defaultValue = "5")int size){
-       // return departmentRestService.searchDepartment(mc, page, size);
+        return departmentRestService.searchDepartment(mc, page, size);
 
+    }
+    @GetMapping("/find")
+    public Optional<Department> findDepartment(Long id) {
+        return  departmentRestService.findDepartment(id);
     }
 }
